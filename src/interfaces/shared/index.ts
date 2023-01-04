@@ -2,7 +2,7 @@ export type Forecast = {
   id: string,
   date: {
     [key: string]: string
-  },
+  } | string,
   weather: string,
   temperature: number,
   humidity: number,

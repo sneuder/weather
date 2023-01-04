@@ -5,7 +5,6 @@ interface WeatherSlice {
   name: string,
   description: string,
   unitsMmt: string,
-  date: string,
   weather: string,
   temperature: number,
   humidity: number,
