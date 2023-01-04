@@ -1,7 +1,11 @@
 import styled from 'styled-components'
+import viewPorts from '../../styles/viewPorts'
 
 export const Wrapper = styled.form`
-  display: ${props => props.hidemobile ? 'none' : 'block'};
+
+@media (max-width: ${viewPorts.mobile}px) {
+    display: ${props => props.hidemobile ? 'none' : 'block'};
+  }
 `
 
 export const SearchInput = styled.input`

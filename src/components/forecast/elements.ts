@@ -5,11 +5,11 @@ export const Wrapper = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
-`
+  `
 
 export const Title = styled.h3`
   font-size: 2rem;
-  font-weight: 300;
+  font-weight: 500;
 `
 
 export const WrapperForecast = styled.div`
@@ -28,6 +28,7 @@ export const ItemForecast = styled.div`
 export const DayTitle = styled.h3`
   font-size: 1rem;
   font-weight: normal;
+  justify-self: end;
 `
 
 export const Text = styled.p`
@@ -40,4 +41,8 @@ export const Text = styled.p`
 export const WrapperDetails = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+`
+
+export const ImageDetail = styled.img`
+  width: 10px;
 `

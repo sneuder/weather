@@ -1,5 +1,8 @@
 export type Forecast = {
-  date: string,
+  id: string,
+  date: {
+    [key: string]: string
+  },
   weather: string,
   temperature: number,
   humidity: number,

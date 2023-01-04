@@ -1,9 +1,8 @@
-// fix secure api
 import axios from 'axios'
 import SearchSlice from '../interfaces/SearchSlice'
 
-const BASE_URL = 'https://api.openweathermap.org/data/2.5/'
-const API_KEY = 'ce026dc549f7e825335d37270df52b23'
+const BASE_URL = import.meta.env.VITE_BASE_URL
+const API_KEY = import.meta.env.VITE_API_KEY
 
 type EndPoints = 'weather' | 'forecast'
 

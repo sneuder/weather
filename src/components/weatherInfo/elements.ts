@@ -28,11 +28,6 @@ export const Text = styled.p`
   }
 `
 
-export const Icon = styled.img`
-  width: 100%;
-  height: auto;
-`
-
 export const Temperature = styled.h1`
   display: grid;
   grid-template-columns: 1fr auto;
@@ -60,4 +55,10 @@ export const ProgressBar = styled.progress`
     background-color: ${colors.blue};
 
 }
+`
+
+export const ArrowIcon = styled.img`
+  width: 40px;
+  color: ${colors.white};
+  transform: rotate(${({ deg }) => deg ? `${deg}deg` : '0'});
 `
