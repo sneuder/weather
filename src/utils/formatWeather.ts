@@ -1,7 +1,7 @@
 const generateUrlImage = (codeImg: string) => `https://openweathermap.org/img/wn/${codeImg}@2x.png`
 
 const formatDate = (tz: number, dt: number) => {
-  return (new Date(dt * 1000 - (tz * 1000))).toDateString();
+  return (new Date(dt * 1000 - (tz * 1000))).toDateString()
 }
 
 const basicInformation = (infoCity) => {

@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
-import viewPorts from '../../styles/viewPorts';
+import viewPorts from '../../styles/viewPorts'
 
-const paddingSide = "30px";
+const paddingSide = '30px'
 
 export const Background = styled.div`
   display: flex;
@@ -38,13 +38,13 @@ export const ForecastSide = styled.section`
   background-color: ${colors.cakeBlue};
   border-radius: 8px 0 0 8px;
 
-  ${({ hidedesktop }) => hidedesktop && `display: none;`}
+  ${({ hidedesktop }) => hidedesktop && 'display: none;'}
   
   @media (max-width: ${viewPorts.table}px) {
     border-radius: 8px 8px 0 0;
     display: block;
     padding: 20px;
-    ${({ hidedesktop }) => hidedesktop && `border-radius: 0 0 8px 8px;`}
+    ${({ hidedesktop }) => hidedesktop && 'border-radius: 0 0 8px 8px;'}
   }
 
   @media (max-width: ${viewPorts.mobile}px) {

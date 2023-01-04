@@ -5,7 +5,7 @@ const WeatherStatus = ({title, text, unit, children}) => {
     <WrapperStatus>
       <Title>{title}</Title>
       <Text>{text}
-      <TextUnit>{unit}</TextUnit>
+        <TextUnit>{unit}</TextUnit>
       </Text>
       {children}
     </WrapperStatus>

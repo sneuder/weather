@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.form`
-  display: ${props => props.hidemobile ? "none" : "block"};
+  display: ${props => props.hidemobile ? 'none' : 'block'};
 `
 
 export const SearchInput = styled.input`

@@ -1,9 +1,9 @@
-import { useRef } from 'react';
+import { useRef } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { updateParam } from '../store/searchSlice';
+import { updateParam } from '../store/searchSlice'
 
-import units from '../utils/units';
+import units from '../utils/units'
 
 const useSearch = () => {
   const unit = useSelector((state: any) => state.search.units)
@@ -11,7 +11,7 @@ const useSearch = () => {
   const refSearch = useRef()
 
   const setSearchName = (e:any) => {
-    e.preventDefault();
+    e.preventDefault()
     const value:string = refSearch.current.value
     dispatch(updateParam({key: 'q', value: value}))
   }

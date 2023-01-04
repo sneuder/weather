@@ -1,7 +1,7 @@
-import useSearch from "../../hooks/useSearch"
-import { Button } from "./elements"
+import useSearch from '../../hooks/useSearch'
+import { Button } from './elements'
 
-import units from "../../utils/units"
+import units from '../../utils/units'
 
 const UnitButton = () => {
   const {changeUnits, unit} = useSearch()

@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { updateWeather } from '../store/weatherSlice';
-import { updateParam } from '../store/searchSlice';
+import { updateWeather } from '../store/weatherSlice'
+import { updateParam } from '../store/searchSlice'
 
-import axiosRequest from "../utils/axiosRequest"
-import formatWeather from '../utils/formatWeather';
-import defaultCountry from '../utils/defaultCountry';
+import axiosRequest from '../utils/axiosRequest'
+import formatWeather from '../utils/formatWeather'
+import defaultCountry from '../utils/defaultCountry'
 
 const useWeather = () => {
   const dispatch = useDispatch()
@@ -46,4 +46,4 @@ const useWeather = () => {
   }
 }
 
-export default useWeather;
+export default useWeather

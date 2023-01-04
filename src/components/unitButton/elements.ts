@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
-const size = "40px"
+const size = '40px'
 
 export const Button = styled.button`
   width: ${size};

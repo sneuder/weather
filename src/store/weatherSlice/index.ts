@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import reducers from './reducers';
+import reducers from './reducers'
 
 const searchSlice = createSlice({
   name: 'weather',
@@ -9,5 +9,5 @@ const searchSlice = createSlice({
   reducers: reducers
 })
 
-export const { updateWeather } = searchSlice.actions;
-export default searchSlice.reducer;
+export const { updateWeather } = searchSlice.actions
+export default searchSlice.reducer

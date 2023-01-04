@@ -1,11 +1,11 @@
 const units = {
   temperature: {
-    metric: "°C",
-    imperial: "°F"
+    metric: '°C',
+    imperial: '°F'
   },
   wind: {
-    metric: "k/h",
-    imperial: "mph"
+    metric: 'k/h',
+    imperial: 'mph'
   },
 
   unitsOrder: ['imperial', 'metric']
