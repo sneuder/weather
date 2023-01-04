@@ -8,11 +8,14 @@ import axiosRequest from '../utils/axiosRequest'
 import formatWeather from '../utils/formatWeather'
 import defaultCountry from '../utils/defaultCountry'
 
+import WeatherSlice from '../interfaces/WeatherSlice'
+import { RootState } from '../store'
+
 const useWeather = () => {
   const dispatch = useDispatch()
   
-  const paramsSearch = useSelector((state: any) => state.search)
-  const infoCity = useSelector((state: any) => state.weather.cityWeather)
+  const paramsSearch = useSelector((state: RootState) => state.search)
+  const infoCity: any = useSelector((state: RootState) => state.weather)
 
   const weatherByName = async (auxiliarName?:string) => {
     if (paramsSearch.q === '') {
@@ -22,7 +25,7 @@ const useWeather = () => {
     try {
       const cityWeather = await axiosRequest('GET', 'weather', paramsSearch)
       const cityForecast = await axiosRequest('GET', 'forecast', paramsSearch)
-      const cityWeatherFormatted:any = formatWeather(cityWeather, cityForecast)
+      const cityWeatherFormatted = formatWeather(cityWeather, cityForecast)
       dispatch(updateWeather(cityWeatherFormatted))
     } catch(e) {
       return dispatch(updateParam({key: 'q', value: auxiliarName}))

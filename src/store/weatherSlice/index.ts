@@ -3,9 +3,7 @@ import reducers from './reducers'
 
 const searchSlice = createSlice({
   name: 'weather',
-  initialState: {
-    cityWeather: {}
-  },
+  initialState: {},
   reducers: reducers
 })
 

@@ -1,3 +1,4 @@
+import WeatherSlice from '../interfaces/WeatherSlice'
 const generateUrlImage = (codeImg: string) => `https://openweathermap.org/img/wn/${codeImg}@2x.png`
 
 const formatDate = (tz: number, dt: number) => {
@@ -15,18 +16,16 @@ const basicInformation = (infoCity) => {
   }
 }
 
-const formatForecast = ({ list }) => list.map(item => basicInformation(item))
+const formatForecast = ({ list }) => list.map((item) => basicInformation(item))
 
-const formatWeather = (infoCity, infoForecast) => {
+const formatWeather = (infoCity, infoForecast): WeatherSlice => {
   return {
-    cityWheater: {
-      id: infoCity.id,
-      name: infoCity.name,
-      description: infoCity.weather[0].description,
-      unitsMmt: infoCity.unitsMmt,
-      ...basicInformation(infoCity),
-      forecast: formatForecast(infoForecast)
-    }
+    id: infoCity.id,
+    name: infoCity.name,
+    description: infoCity.weather[0].description,
+    unitsMmt: infoCity.unitsMmt,
+    ...basicInformation(infoCity),
+    forecast: formatForecast(infoForecast)
   }
 }
 

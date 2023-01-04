@@ -3,10 +3,11 @@ import { useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateParam } from '../store/searchSlice'
 
+import { RootState } from '../store'
 import units from '../utils/units'
 
 const useSearch = () => {
-  const unit = useSelector((state: any) => state.search.units)
+  const unit = useSelector((state: RootState) => state.search.units)
   const dispatch = useDispatch()
   const refSearch = useRef()
 
@@ -17,7 +18,7 @@ const useSearch = () => {
   }
 
   const changeUnits = () => {
-    const value = units.unitsOrder.shift()
+    const value = units.unitsOrder.shift() as 'metric' | 'imperial'
     units.unitsOrder.push(value)
     dispatch(updateParam({key: 'units', value: value}))
   }

@@ -1,4 +1,6 @@
-const units = {
+import Units from '../interfaces/Units'
+
+const units: Units = {
   temperature: {
     metric: '°C',
     imperial: '°F'
