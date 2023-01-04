@@ -4,8 +4,9 @@ import { Background, CardWrapper, ForecastSide, WeatherSide, WrapperButton } fro
 
 import SearchBar from '../../components/searchBar'
 import UnitButton from '../../components/unitButton'
-import WeatherIcon from '../../components/weatherIcon'
+import WeatherIcon from '../../shared/weatherIcon'
 import WeatherInfo from '../../components/weatherInfo'
+import Forecast from '../../components/forecast'
 
 import Loader from '../../components/loader'
 
@@ -16,17 +17,18 @@ const Home = () => {
       {
         !infoCity.name ? <Loader /> : <CardWrapper>
           <ForecastSide>
-            <SearchBar />
+            <SearchBar hidemobile={true}/>
+            <Forecast infoForecast={infoCity.forecast}/>
           </ForecastSide>
           <WeatherSide>
             <WrapperButton>
-              <WeatherIcon icon={infoCity.icon} description={infoCity.description}/>
+              <WeatherIcon icon={infoCity.icon} description={infoCity.description} main={true}/>
               <UnitButton />
             </WrapperButton>
             <WeatherInfo infoCity={infoCity} />
           </WeatherSide>
           <ForecastSide hidedesktop>
-            <SearchBar hidemobile={true}/>
+            <SearchBar />
           </ForecastSide>
         </CardWrapper>
 

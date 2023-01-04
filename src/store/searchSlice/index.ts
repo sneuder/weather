@@ -5,7 +5,8 @@ const searchSlice = createSlice({
   name: 'search',
   initialState: {
     q: '',
-    units: 'metric'
+    units: 'metric',
+    cnt: 5
   },
   reducers: reducers
 })

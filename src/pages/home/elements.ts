@@ -11,6 +11,10 @@ export const Background = styled.div`
 
   background-color: ${colors.blue};
   min-height: 100vh;
+
+  @media (max-width: ${viewPorts.mobile}px) {
+    padding:0;
+  }
 `
 
 export const CardWrapper = styled.div`
@@ -24,7 +28,7 @@ export const CardWrapper = styled.div`
 
   @media (max-width: ${viewPorts.table}px) {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
   }
 
   @media (max-width: ${viewPorts.mobile}px) {
@@ -34,6 +38,10 @@ export const CardWrapper = styled.div`
 `
 
 export const ForecastSide = styled.section`
+  display: grid;
+  grid-template-columns: 1fr;
+  align-content: start;
+  gap: 10px;
   padding: ${paddingSide};
   background-color: ${colors.cakeBlue};
   border-radius: 8px 0 0 8px;

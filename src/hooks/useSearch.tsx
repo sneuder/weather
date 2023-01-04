@@ -13,7 +13,8 @@ const useSearch = () => {
 
   const setSearchName = (e:any) => {
     e.preventDefault()
-    const value:string = refSearch.current.value
+    const value:string = refSearch.current.value.trim()
+    if (value === '') return
     dispatch(updateParam({key: 'q', value: value}))
   }
 

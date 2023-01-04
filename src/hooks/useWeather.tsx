@@ -15,7 +15,7 @@ const useWeather = () => {
   const dispatch = useDispatch()
   
   const paramsSearch = useSelector((state: RootState) => state.search)
-  const infoCity: any = useSelector((state: RootState) => state.weather)
+  const infoCity = useSelector((state: RootState) => state.weather)
 
   const weatherByName = async (auxiliarName?:string) => {
     if (paramsSearch.q === '') {
