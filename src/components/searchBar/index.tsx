@@ -3,11 +3,11 @@ import useSearch from "../../hooks/useSearch";
 
 import { Wrapper, SearchInput, Icon } from "./elements"
 
-const SearchBar = () => {
+const SearchBar = ({hidemobile}) => {
   const { refSearch, setSearchName } = useSearch();
 
   return (
-    <Wrapper onSubmit={setSearchName}>
+    <Wrapper onSubmit={setSearchName} hidemobile={hidemobile}>
       <SearchInput type="text" ref={refSearch} placeholder={"Search new place"}/>
     </Wrapper>
   )

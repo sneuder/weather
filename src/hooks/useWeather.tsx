@@ -14,21 +14,31 @@ const useWeather = () => {
   const paramsSearch = useSelector((state: any) => state.search)
   const infoCity = useSelector((state: any) => state.weather.cityWeather)
 
-  const weatherByName = async () => {
+  const weatherByName = async (auxiliarName?:string) => {
     if (paramsSearch.q === '') {
       return dispatch(updateParam({key: 'q', value: defaultCountry()}))
     }
 
-    const cityWeather = await axiosRequest('GET', 'weather', paramsSearch)
-    const cityForecast = await axiosRequest('GET', 'forecast', paramsSearch)
-
-    const cityWeatherFormatted:any = formatWeather(cityWeather, cityForecast)
-    dispatch(updateWeather(cityWeatherFormatted))
+    try {
+      const cityWeather = await axiosRequest('GET', 'weather', paramsSearch)
+      const cityForecast = await axiosRequest('GET', 'forecast', paramsSearch)
+      const cityWeatherFormatted:any = formatWeather(cityWeather, cityForecast)
+      dispatch(updateWeather(cityWeatherFormatted))
+    } catch(e) {
+      return dispatch(updateParam({key: 'q', value: auxiliarName}))
+    }
+    
   }
+  
+  useEffect(() => {
+    const auxiliarName = infoCity.name
+    dispatch(updateWeather({}))
+    weatherByName(auxiliarName)
+  }, [paramsSearch.q])
 
   useEffect(() => {
     weatherByName()
-  }, [paramsSearch])
+  }, [paramsSearch.units])
 
   return {
     infoCity,
