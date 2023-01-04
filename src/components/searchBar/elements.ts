@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import viewPorts from '../../styles/viewPorts'
+import { Props } from '../../interfaces/shared'
 
-export const Wrapper = styled.form`
+export const Wrapper = styled.form<Props>`
 
 @media (max-width: ${viewPorts.mobile}px) {
     display: ${props => props.hidemobile ? 'none' : 'block'};

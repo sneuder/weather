@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
+import { Props } from '../../interfaces/shared'
 
 export const Wrapper = styled.div`
   color: ${colors.white};
@@ -57,7 +58,7 @@ export const ProgressBar = styled.progress`
 }
 `
 
-export const ArrowIcon = styled.img`
+export const ArrowIcon = styled.img<Props>`
   width: 40px;
   color: ${colors.white};
   transform: rotate(${({ deg }) => deg ? `${deg}deg` : '0'});
