@@ -19,12 +19,14 @@ const formatForecast = ({ list }) => list.map(item => basicInformation(item))
 
 const formatWeather = (infoCity, infoForecast) => {
   return {
-    id: infoCity.id,
-    name: infoCity.name,
-    description: infoCity.weather[0].description,
-    unitsMmt: infoCity.unitsMmt,
-    ...basicInformation(infoCity),
-    forecast: formatForecast(infoForecast)
+    cityWheater: {
+      id: infoCity.id,
+      name: infoCity.name,
+      description: infoCity.weather[0].description,
+      unitsMmt: infoCity.unitsMmt,
+      ...basicInformation(infoCity),
+      forecast: formatForecast(infoForecast)
+    }
   }
 }
 
