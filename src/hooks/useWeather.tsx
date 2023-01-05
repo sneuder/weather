@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import weatherSlice, { updateWeather } from '../store/weatherSlice'
-import { updateParam } from '../store/searchSlice'
+import { updateParam } from '../store/appSlice'
 
 import axiosRequest from '../utils/axiosRequest'
 import formatWeather from '../utils/formatWeather'
