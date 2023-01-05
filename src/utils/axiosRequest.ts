@@ -1,22 +1,19 @@
 import axios from 'axios'
-import SearchSlice from '../interfaces/SearchSlice'
+import { EndPoints, SearchParams } from '../interfaces/shared'
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const API_KEY = import.meta.env.VITE_API_KEY
 
-type EndPoints = 'weather' | 'forecast'
-
-const axiosRequest = async (method: 'GET', endPoint: EndPoints, params: SearchSlice) => {
+const axiosRequest = async (method: 'GET', endPoint: EndPoints, params: SearchParams) => {
   const { data } = await axios({
     method: method,
+    url: `${BASE_URL}${endPoint}`,
     params: {
       appid: API_KEY,
       ...params
     },
-    url: `${BASE_URL}${endPoint}`
   })
 
-  data.unitsMmt = params.units
   return data
 }
 

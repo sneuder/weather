@@ -1,20 +1,7 @@
-import { Forecasts, Wind } from './shared'
+import { DataWeather } from './shared'
 
-interface WeatherSlice {
-  id: number,
-  name: string,
-  description: string,
-  unitsMmt: string,
-  date: {
-    date: string,
-    time: string,
-  },
-  weather: string,
-  temperature: number,
-  humidity: number,
-  wind: Wind,
-  icon: string,
+export interface WeatherSlice extends DataWeather {
   forecast: Array<Forecasts>
 }
 
-export default WeatherSlice
+type Forecasts = DataWeather
