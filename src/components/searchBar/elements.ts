@@ -1,12 +1,11 @@
 import styled from 'styled-components'
 import viewPorts from '../../styles/viewPorts'
-import { Props } from '../../interfaces/shared'
+import { StyleProps } from '../../interfaces/shared'
 
-export const Wrapper = styled.form<Props>`
-
-@media (max-width: ${viewPorts.mobile}px) {
-    display: ${props => props.hidemobile ? 'none' : 'block'};
-  }
+export const Wrapper = styled.form<StyleProps>`
+  @media (max-width: ${viewPorts.mobile}px) {
+      display: ${props => props.hidemobile ? 'none' : 'block'};
+    }
 `
 
 export const SearchInput = styled.input`
