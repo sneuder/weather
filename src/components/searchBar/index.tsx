@@ -1,9 +1,10 @@
 // hidemobile prop as styled prop to hide element in moble viewports
-import useWeather from '../../hooks/useWeather'
-import { Wrapper, SearchInput, Icon } from './elements'
+import { FC } from 'react'
 import { ComProps } from '../../interfaces/shared'
+import { Wrapper, SearchInput, Icon } from './elements'
+import useWeather from '../../hooks/useWeather'
 
-const SearchBar = ({hidemobile}: ComProps) => {
+const SearchBar:FC<ComProps> = ({hidemobile}) => {
   const {getWeatherByName, refSearch} = useWeather()
   return (
     <Wrapper onSubmit={getWeatherByName} hidemobile={hidemobile}>
