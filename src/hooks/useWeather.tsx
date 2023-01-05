@@ -1,70 +1,40 @@
-import { useEffect } from 'react'
+// update the information and return the info
+import { useRef, FormEvent } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-
-import weatherSlice, { updateWeather } from '../store/weatherSlice'
+import { updateWeather } from '../store/weatherSlice'
 import { updateParam } from '../store/appSlice'
 
-import axiosRequest from '../utils/axiosRequest'
-import formatWeather from '../utils/formatWeather'
-import defaultCountry from '../utils/defaultCountry'
+import handleWeather from '../utils/handleWeather'
+import { handleParamsSearch, handleAppSearch } from '../utils/handleParams'
 
-import WeatherSlice from '../interfaces/WeatherSlice'
-import { UnknownProps } from '../interfaces/shared'
 import { RootState } from '../store'
 
 const useWeather = () => {
+  // get name by referring
+  const refSearch = useRef<HTMLInputElement>(null)
+
+  const params = useSelector((state: RootState) => state.appState.params)
   const dispatch = useDispatch()
-  const paramsSearch = useSelector((state: RootState) => state.search)
-  const infoCity = useSelector((state: RootState): WeatherSlice | UnknownProps => state.weather)
-
-  const weatherByName = async (auxiliarName?:string) => {
-    if (paramsSearch.q === '') {
-      return dispatch(updateParam({key: 'q', value: defaultCountry()}))
-    }
-
-    try {
-      const cityWeather = await axiosRequest('GET', 'weather', paramsSearch)
-      const cityForecast = await axiosRequest('GET', 'forecast', paramsSearch)
-      const cityWeatherFormatted = formatWeather(cityWeather, cityForecast)
-      dispatch(updateWeather(cityWeatherFormatted))
-    } catch(e) {
-      return dispatch(updateParam({key: 'q', value: auxiliarName || ''}))
-    }
-    
-  }
   
-  useEffect(() => {
-    const auxiliarName = infoCity.name
-    dispatch(updateWeather({
-      id: 0,
-      name: '',
-      description: '',
-      unitsMmt: '',
-      weather: '',
-      temperature: 0,
-      humidity: 0,
-      wind: {
-        speed: 0,
-        deg: 0
-      },
-      icon: '',
-      forecast: [],
-      date: {
-        date: '',
-        time: ''
-      }
-    }))
-    
-    weatherByName(auxiliarName)
-  }, [paramsSearch.q])
+  const getWeatherByName = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
 
-  useEffect(() => {
-    weatherByName()
-  }, [paramsSearch.units])
+    const name = refSearch.current?.value || ''
+    const modifiedParam = handleParamsSearch(params, 'q', name)
+
+    handleWeather(modifiedParam).then(data => {
+      dispatch(updateWeather(data))
+      dispatch(updateParam(handleAppSearch('q', modifiedParam.q)))
+    })
+  }
+
+  // const changeUnit = () => {
+
+  // }
 
   return {
-    infoCity,
-    weatherByName,
+    getWeatherByName,
+    refSearch,
   }
 }
 
