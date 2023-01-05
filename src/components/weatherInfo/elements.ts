@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
-import { Props } from '../../interfaces/shared'
+
+type StyleProps = {
+  deg: number
+}
 
 export const Wrapper = styled.div`
   color: ${colors.white};
@@ -58,8 +61,21 @@ export const ProgressBar = styled.progress`
 }
 `
 
-export const ArrowIcon = styled.img<Props>`
+export const ArrowIcon = styled.img<StyleProps>`
   width: 40px;
   color: ${colors.white};
-  transform: rotate(${({ deg }) => deg ? `${deg}deg` : '0'});
+  
+  animation-name: arrowAnimation;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  
+  @keyframes arrowAnimation {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(${({ deg }) => deg}deg);
+    }
+  }
 `

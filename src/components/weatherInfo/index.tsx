@@ -1,17 +1,15 @@
-import { Wrapper, Weather, Text, Temperature, BadgeTemp, WrapperGeneral, ProgressBar, ArrowIcon } from './elements'
-import WrapperStatus from '../../shared/WeatherStatus'
-import units from '../../utils/units'
+import React,{ FC } from 'react'
 import WeatherSlice from '../../interfaces/WeatherSlice'
-import { UnitsOps } from '../../interfaces/Units'
-import { UnknownProps } from '../../interfaces/shared'
+import WrapperStatus from '../../shared/WeatherStatus'
+import { Wrapper, Weather, Text, Temperature, BadgeTemp, WrapperGeneral, ProgressBar, ArrowIcon } from './elements'
 
 type Props = {
-  infoCity: WeatherSlice | UnknownProps
+  infoCity: WeatherSlice
 }
 
-const WeatherInfo = ({infoCity}:Props) => {
-  const {weather, description, temperature, name, date, humidity, wind, unitsMmt} = infoCity
-  const key: keyof UnitsOps = unitsMmt as any
+const WeatherInfo:FC<Props> = ({ infoCity }) => {
+  const {name, infoTime } = infoCity
+  const {description, wind, weather, temperature, humidity} = infoCity.details
 
   return (
     <Wrapper>
@@ -19,17 +17,20 @@ const WeatherInfo = ({infoCity}:Props) => {
         <Weather>{weather}</Weather>
         <Text>{description}</Text>
       </WrapperGeneral>
+
       <Temperature>{temperature}
         <BadgeTemp>
-          {units.temperature[key]}
+          {'C'}
         </BadgeTemp>
       </Temperature>
-      <Text>{name}, {date.date}</Text>
+      <Text>{name}, {infoTime.date}</Text>
+
       <WrapperStatus title={'Humidity'} measure={humidity} unit={'%'}>
         <ProgressBar max={'100'} value={humidity}/>
       </WrapperStatus>
-      <WrapperStatus title={'Wind Status'} measure={wind?.speed} unit={units.wind[key]}>
-        <ArrowIcon deg={wind.deg}src={'https://www.reshot.com/preview-assets/icons/GPJQ8YVENZ/circle-arrow-left-GPJQ8YVENZ.svg'}/>
+      
+      <WrapperStatus title={'Wind Status'} measure={wind.speed} unit={'k/h'}>
+        <ArrowIcon deg={wind.deg} src={'https://www.reshot.com/preview-assets/icons/GPJQ8YVENZ/circle-arrow-left-GPJQ8YVENZ.svg'}/>
       </WrapperStatus>
     </Wrapper>
   )
