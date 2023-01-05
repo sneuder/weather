@@ -48,7 +48,11 @@ const useWeather = () => {
         deg: 0
       },
       icon: '',
-      forecast: []
+      forecast: [],
+      date: {
+        date: '',
+        time: ''
+      }
     }))
     
     weatherByName(auxiliarName)

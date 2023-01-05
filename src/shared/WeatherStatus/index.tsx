@@ -1,10 +1,17 @@
 import { WrapperStatus, Title, Text, TextUnit } from './elements'
 
-const WeatherStatus = ({title, text, unit, children}) => {
+type Props = {
+  title: string,
+  measure: number,
+  unit: string,
+  children: JSX.Element,
+}
+
+const WeatherStatus = ({title, measure, unit, children}: Props) => {
   return (
     <WrapperStatus>
       <Title>{title}</Title>
-      <Text>{text}
+      <Text>{measure}
         <TextUnit>{unit}</TextUnit>
       </Text>
       {children}

@@ -1,7 +1,13 @@
 import { Icon } from './elements'
 
-const WeatherIcon = ({ icon, description, main }: string) => {
-  return <Icon src={icon} main={main}/>
+type Props = {
+  icon: string,
+  description?: string,
+  main?: boolean,
+}
+
+const WeatherIcon = ({ icon, description, main }: Props) => {
+  return <Icon src={icon} main={main} alt={description || 'This is an icon'}/>
 }
 
 export default WeatherIcon

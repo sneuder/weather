@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <Background>
       {
-        !infoCity.name ? <Loader /> :
+        infoCity.id !== '' ? <Loader /> :
           <CardWrapper>
             <ForecastSide>
               <SearchBar hidemobile={true}/>
@@ -32,12 +32,9 @@ const Home = () => {
               <SearchBar />
             </ForecastSide>
           </CardWrapper>
-
       }
-      
     </Background>
   )
-  
 }
 
 export default Home

@@ -1,8 +1,9 @@
 export type Forecasts = {
   id: string,
   date: {
-    [key: string]: string
-  } | string,
+    date: string,
+    time: string,
+  },
   weather: string,
   temperature: number,
   humidity: number,
@@ -16,7 +17,7 @@ export type Wind = {
 }
 
 export interface Props {
-  [key: string]: boolean
+  [key: string]: boolean | any
 }
 
 export interface UnknownProps {

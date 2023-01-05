@@ -1,26 +1,31 @@
 import WeatherSlice from '../interfaces/WeatherSlice'
+import { UnknownProps } from '../interfaces/shared'
 import { v4 as uuidv4 } from 'uuid'
 
 const generateUrlImage = (codeImg: string) => `https://openweathermap.org/img/wn/${codeImg}@2x.png`
 
-const formatDate = (tz: number, dt: number) => {
-  return (new Date(dt * 1000 - (tz * 1000))).toDateString()
-}
-
-const formatDateByText = (dt_txt: string) => {
-  const newDate = new Date(dt_txt)
-  const date = {
-    time: newDate.toLocaleDateString(),
-    date: newDate.toLocaleTimeString('en-US', {
+const dateAndTime = (newDate: Date) => {
+  return {
+    date: newDate.toDateString(),
+    time: newDate.toLocaleTimeString('en-US', {
       hour12: true,
       hour: 'numeric',
       minute: 'numeric'
     }),
   }
-  return date
 }
 
-const basicInformation = (infoCity) => {
+const formatDate = (tz: number, dt: number) => {
+  const newDate = (new Date(dt * 1000 - (tz * 1000)))
+  return dateAndTime(newDate)
+}
+
+const formatDateByText = (dt_txt: string) => {
+  const newDate = new Date(dt_txt)
+  return dateAndTime(newDate)
+}
+
+const basicInformation = (infoCity: UnknownProps) => {
   const date = infoCity.dt_txt ? formatDateByText(infoCity.dt_txt) : formatDate(infoCity.timezone, infoCity.dt)
   const { humidity, temp } = infoCity.main
   const { main, icon } = infoCity.weather[0]
@@ -36,15 +41,15 @@ const basicInformation = (infoCity) => {
   }
 }
 
-const formatForecast = ({ list }) => {
-  return list.map((item) => {
+const formatForecast = ({ list }: UnknownProps) => {
+  return list.map((item: UnknownProps) => {
     const formatted = basicInformation(item)
     formatted.id = uuidv4()
     return formatted
   })
 }
 
-const formatWeather = (infoCity: any, infoForecast: any): WeatherSlice => {
+const formatWeather = (infoCity: UnknownProps, infoForecast: UnknownProps): WeatherSlice => {
   return {
     ...basicInformation(infoCity),
     id: infoCity.id,

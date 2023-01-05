@@ -40,7 +40,7 @@ export const CardWrapper = styled.div`
 
 export const ForecastSide = styled.section<Props>`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr;|
   align-content: start;
   gap: 10px;
   padding: ${paddingSide};
