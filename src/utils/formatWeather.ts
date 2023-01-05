@@ -44,7 +44,7 @@ const formatForecast = ({ list }) => {
   })
 }
 
-const formatWeather = (infoCity, infoForecast): WeatherSlice => {
+const formatWeather = (infoCity: any, infoForecast: any): WeatherSlice => {
   return {
     ...basicInformation(infoCity),
     id: infoCity.id,

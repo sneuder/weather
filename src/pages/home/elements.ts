@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
 import viewPorts from '../../styles/viewPorts'
+import { Props } from '../../interfaces/shared'
 
 const paddingSide = '30px'
 
@@ -37,7 +38,7 @@ export const CardWrapper = styled.div`
   }
 `
 
-export const ForecastSide = styled.section`
+export const ForecastSide = styled.section<Props>`
   display: grid;
   grid-template-columns: 1fr;
   align-content: start;

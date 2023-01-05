@@ -1,6 +1,7 @@
 interface SearchSlice {
   q: string,
-  units: string | UnitsOps
+  units: string | UnitsOps,
+  cnt: number
 }
 
 export interface ParamsToUpdate {

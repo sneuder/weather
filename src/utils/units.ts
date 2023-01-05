@@ -2,8 +2,8 @@ import Units from '../interfaces/Units'
 
 const units: Units = {
   temperature: {
-    metric: '°C',
-    imperial: '°F'
+    'metric': '°C',
+    'imperial': '°F'
   },
   wind: {
     metric: 'k/h',

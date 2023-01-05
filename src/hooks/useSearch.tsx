@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, FormEvent } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { updateParam } from '../store/searchSlice'
@@ -9,11 +9,11 @@ import units from '../utils/units'
 const useSearch = () => {
   const unit = useSelector((state: RootState) => state.search.units)
   const dispatch = useDispatch()
-  const refSearch = useRef()
+  const refSearch = useRef<HTMLInputElement>(null)
 
-  const setSearchName = (e:any) => {
+  const setSearchName = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const value:string = refSearch.current.value.trim()
+    const value:string = refSearch.current?.value.trim() as string
     if (value === '') return
     dispatch(updateParam({key: 'q', value: value}))
   }

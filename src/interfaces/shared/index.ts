@@ -1,4 +1,4 @@
-export type Forecast = {
+export type Forecasts = {
   id: string,
   date: {
     [key: string]: string
@@ -13,4 +13,12 @@ export type Forecast = {
 export type Wind = {
   speed: number,
   deg: number,
+}
+
+export interface Props {
+  [key: string]: boolean
+}
+
+export interface UnknownProps {
+  [key: string]: any
 }

@@ -1,7 +1,7 @@
 import { Wrapper, Title, WrapperForecast, ItemForecast, DayTitle, Text, WrapperDetails, ImageDetail } from './elements'
 import WeatherIcon from '../../shared/weatherIcon'
-
-const Forecast = ({infoForecast}) => {
+import { Forecasts } from '../../interfaces/shared'
+const Forecast = ({infoForecast}: Array<Forecasts>) => {
   return (
     <Wrapper>
       <Title>Weather Forecast</Title>

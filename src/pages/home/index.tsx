@@ -15,22 +15,23 @@ const Home = () => {
   return (
     <Background>
       {
-        !infoCity.name ? <Loader /> : <CardWrapper>
-          <ForecastSide>
-            <SearchBar hidemobile={true}/>
-            <Forecast infoForecast={infoCity.forecast}/>
-          </ForecastSide>
-          <WeatherSide>
-            <WrapperButton>
-              <WeatherIcon icon={infoCity.icon} description={infoCity.description} main={true}/>
-              <UnitButton />
-            </WrapperButton>
-            <WeatherInfo infoCity={infoCity} />
-          </WeatherSide>
-          <ForecastSide hidedesktop>
-            <SearchBar />
-          </ForecastSide>
-        </CardWrapper>
+        !infoCity.name ? <Loader /> :
+          <CardWrapper>
+            <ForecastSide>
+              <SearchBar hidemobile={true}/>
+              <Forecast infoForecast={infoCity.forecast}/>
+            </ForecastSide>
+            <WeatherSide>
+              <WrapperButton>
+                <WeatherIcon icon={infoCity.icon} description={infoCity.description} main={true}/>
+                <UnitButton />
+              </WrapperButton>
+              <WeatherInfo infoCity={infoCity} />
+            </WeatherSide>
+            <ForecastSide hidedesktop>
+              <SearchBar />
+            </ForecastSide>
+          </CardWrapper>
 
       }
       

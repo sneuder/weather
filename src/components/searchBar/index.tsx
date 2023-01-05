@@ -3,7 +3,7 @@ import useSearch from '../../hooks/useSearch'
 
 import { Wrapper, SearchInput, Icon } from './elements'
 
-const SearchBar = ({hidemobile}) => {
+const SearchBar = ({hidemobile}: any) => {
   const { refSearch, setSearchName } = useSearch()
 
   return (

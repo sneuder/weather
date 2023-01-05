@@ -4,7 +4,7 @@ interface Units {
   unitsOrder: ['imperial', 'metric']
 }
 
-type UnitsOps = {
+export type UnitsOps = {
   metric: '°C' | 'k/h',
   imperial: '°F' | 'mph'
 }
