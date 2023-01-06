@@ -23,6 +23,7 @@ VITE_API_KEY=ce026dc549f7e825335d37270df52b23
 - User can search cities and countries by name.
 - User can see the forecasts of found city or country.
 - User can change the unit of temperature.
+- User can select the options in the forecast section.
 
 ## Technical aspects :printer:
 - When the app is started, it gets the city based on its local date (where it contains the country too). If the date with the country is not found, the app will retrieve Londres.
