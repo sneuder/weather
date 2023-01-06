@@ -7,7 +7,8 @@ It is important to mention that the `node` version used for this project was the
 ### Steps for installation
 In case you do not want to do all this process, and you just want to use the project, click [Weather App](https://weather-sneuder.vercel.app/) to check it in producction. 
 
-- `git clone` this repository: `git clone`
+- `git clone` this repository: 
+  - `git clone https://github.com/sneuder/weather.git` or `git clone git@github.com:sneuder/weather.git`
 - Install the dependencies with this command: `npm install` or `npm i`
 - Create and configure the `.env` file for the env variables like this:
 ```
