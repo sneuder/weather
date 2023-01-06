@@ -1,7 +1,7 @@
 import { ReactElement, RefObject } from 'react'
 
 export interface DataWeather {
-  id: string,
+  id: number | string,
   name: string,
   icon: string,
   details: {
@@ -20,6 +20,28 @@ export interface DataWeather {
   },
 }
 
+export type UnknownInfo = {
+  id: number,
+  name: string,
+  dt_txt: string,
+  wind: {
+    speed: number,
+    deg: number,
+    gust?: number
+  },
+  weather: [{
+    main: string,
+    description: string,
+    icon: string
+  }],
+  main: {
+    temp: number,
+    humidity: number
+  },
+  dt: number,
+  timezone: number,
+}
+
 export type EndPoints = 'weather' | 'forecast'
 
 export type ParamsUpdate = {
@@ -29,11 +51,6 @@ export type ParamsUpdate = {
 
 export type OnSubmit = (event: React.FormEvent<HTMLFormElement>) => void
 
-
-export interface ComProps {
+export type ComProps = {
   [key: string]: boolean | string | number | OnSubmit | ReactElement[] | ReactElement | RefObject<HTMLInputElement>
-}
-
-export interface UnknownProps {
-  [key: string]: any
 }

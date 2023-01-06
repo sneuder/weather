@@ -4,6 +4,6 @@ interface WeatherSlice extends DataWeather {
   forecast: Array<Forecasts>
 }
 
-type Forecasts = DataWeather
+export type Forecasts = DataWeather
 
 export default WeatherSlice
