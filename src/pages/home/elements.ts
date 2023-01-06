@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
 import viewPorts from '../../styles/viewPorts'
-import { Props } from '../../interfaces/shared'
 
 const paddingSide = '30px'
 
@@ -12,6 +11,11 @@ export const Background = styled.div`
 
   background-color: ${colors.blue};
   min-height: 100vh;
+  height: auto;
+
+  @media (max-width: ${viewPorts.table}px) {
+    padding:50px;
+  }
 
   @media (max-width: ${viewPorts.mobile}px) {
     padding:0;
@@ -20,6 +24,7 @@ export const Background = styled.div`
 
 export const CardWrapper = styled.div`
   width: 60%;
+  
   display: grid;
   grid-template-columns: 1fr 0.8fr;
 
@@ -28,21 +33,23 @@ export const CardWrapper = styled.div`
   }
 
   @media (max-width: ${viewPorts.table}px) {
+    width: 100%;
     display: flex;
     flex-direction: column-reverse;
+    height: auto;
   }
 
   @media (max-width: ${viewPorts.mobile}px) {
-    width: 100%;
     align-self: flex-start;
   }
 `
 
-export const ForecastSide = styled.section<Props>`
+export const ForecastSide = styled.section`
   display: grid;
-  grid-template-columns: 1fr;|
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
   align-content: start;
-  gap: 10px;
+  gap: 20px;
   padding: ${paddingSide};
   background-color: ${colors.cakeBlue};
   border-radius: 8px 0 0 8px;
@@ -50,10 +57,10 @@ export const ForecastSide = styled.section<Props>`
   ${({ hidedesktop }) => hidedesktop && 'display: none;'}
   
   @media (max-width: ${viewPorts.table}px) {
-    border-radius: 8px 8px 0 0;
+    border-radius: 0 0 8px 8px;
     display: block;
     padding: 20px;
-    ${({ hidedesktop }) => hidedesktop && 'border-radius: 0 0 8px 8px;'}
+    ${({ hidedesktop }) => hidedesktop && 'border-radius: 8px 8px 0 0;'}
   }
 
   @media (max-width: ${viewPorts.mobile}px) {
@@ -62,6 +69,10 @@ export const ForecastSide = styled.section<Props>`
 `
 
 export const WeatherSide = styled.main`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   padding: ${paddingSide};
   background-color: ${colors.darkBlue};
   border-radius: 0 8px 8px 0;

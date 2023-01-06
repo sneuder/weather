@@ -1,5 +1,4 @@
-import useWeather from '../../hooks/useWeather'
-
+import useStarting from '../../hooks/useStarting'
 import { Background, CardWrapper, ForecastSide, WeatherSide, WrapperButton } from './elements'
 
 import SearchBar from '../../components/searchBar'
@@ -11,28 +10,37 @@ import Forecast from '../../components/forecast'
 import Loader from '../../components/loader'
 
 const Home = () => {
-  const { infoCity } = useWeather()
+  const {infoCity, loadingGeneral} = useStarting()
+
+  const {icon, forecast} = infoCity
+  const {description} = infoCity.details
+
+  if (loadingGeneral) {
+    return (
+      <Background>
+        <Loader />
+      </Background>
+    )
+  }
+
   return (
     <Background>
-      {
-        infoCity.id !== '' ? <Loader /> :
-          <CardWrapper>
-            <ForecastSide>
-              <SearchBar hidemobile={true}/>
-              <Forecast infoForecast={infoCity.forecast}/>
-            </ForecastSide>
-            <WeatherSide>
-              <WrapperButton>
-                <WeatherIcon icon={infoCity.icon} description={infoCity.description} main={true}/>
-                <UnitButton />
-              </WrapperButton>
-              <WeatherInfo infoCity={infoCity} />
-            </WeatherSide>
-            <ForecastSide hidedesktop>
-              <SearchBar />
-            </ForecastSide>
-          </CardWrapper>
-      }
+      <CardWrapper>
+        <ForecastSide>
+          <SearchBar hidemobile={true}/>
+          <Forecast infoForecast={infoCity.forecast}/>
+        </ForecastSide>
+        <WeatherSide>
+          <WrapperButton>
+            <WeatherIcon icon={icon} description={description} />
+            <UnitButton />
+          </WrapperButton>
+          <WeatherInfo infoCity={infoCity} />
+        </WeatherSide>
+        <ForecastSide hidedesktop>
+          <SearchBar />
+        </ForecastSide>
+      </CardWrapper>
     </Background>
   )
 }

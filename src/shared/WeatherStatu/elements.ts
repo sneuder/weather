@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
+import { ComProps } from '../../interfaces/shared'
 
 export const WrapperStatus = styled.div`
   display: grid;
@@ -9,7 +10,7 @@ export const WrapperStatus = styled.div`
   
   border-radius: 4px;
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   background-color: ${colors.darkGreyBlue};
 `
 

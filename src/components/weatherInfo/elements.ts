@@ -37,11 +37,11 @@ export const Temperature = styled.h1`
   grid-template-columns: 1fr auto;
   font-weight: 400;
   font-size: 6rem;
+  line-height: 5rem;
 `
 
 export const BadgeTemp = styled.span`
   font-size: 2rem;
-  padding-top: 20px;
 `
 
 export const ProgressBar = styled.progress`
@@ -55,10 +55,8 @@ export const ProgressBar = styled.progress`
 
   &::-webkit-progress-value {
     border-radius: 4px;
-
     background-color: ${colors.blue};
-
-}
+  }
 `
 
 export const ArrowIcon = styled.img<StyleProps>`
@@ -78,4 +76,12 @@ export const ArrowIcon = styled.img<StyleProps>`
       transform: rotate(${({ deg }) => deg}deg);
     }
   }
+`
+
+export const WrapperStatus = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 130px;
+  gap: 30px;
+  width: 100%;
 `

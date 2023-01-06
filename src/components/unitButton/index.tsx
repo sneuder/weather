@@ -1,13 +1,11 @@
-import useSearch from '../../hooks/useSearch'
+import useWeather from '../../hooks/useWeather'
 import { Button } from './elements'
 
-import units from '../../utils/units'
-import { UnitsOps } from '../../interfaces/Units'
+import units from '../../utils/getNewUnit'
 
 const UnitButton = () => {
-  const {changeUnits, unit} = useSearch()
-  const key: keyof UnitsOps = unit as any
-  return <Button onClick={changeUnits}>{units.temperature[key]}</Button>
+  const {changeUnit, unitLoading} = useWeather()
+  return <Button onClick={changeUnit} disabled={unitLoading} loading={`${unitLoading}`}>{'C'}</Button>
 }
 
 export default UnitButton

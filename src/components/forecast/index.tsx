@@ -1,31 +1,24 @@
-import { Wrapper, Title, WrapperForecast, ItemForecast, DayTitle, Text, WrapperDetails, ImageDetail } from './elements'
+import { Wrapper, ItemForecast, TitleDate, Time } from './elements'
 import WeatherIcon from '../../shared/weatherIcon'
-import { Forecasts } from '../../interfaces/shared'
 
 type ArrayForecast = {
-  infoForecast: Array<Forecasts>
+  infoForecast: Array<{}>
 }
 
 const Forecast = ({infoForecast}: ArrayForecast) => {
+
   return (
     <Wrapper>
-      <Title>Weather Forecast</Title>
-      <WrapperForecast>
-        {
-          infoForecast.map(({humidity, icon, date, id}) => (
-            <ItemForecast key={id}>
-              <DayTitle>{date.date}</DayTitle>
-              <Text>{date.time}</Text>
-              <WrapperDetails>
-                <ImageDetail src={'https://www.svgrepo.com/show/279711/humidity.svg'} />
-                <Text>{humidity}%</Text>
-              </WrapperDetails>
-              <WeatherIcon icon={icon}/>
-            </ItemForecast>
-          ))
-        }
+      {
+        infoForecast.map(({id, details, icon, infoTime }) => (
+          <ItemForecast key={id}>
+            <Time>{infoTime.time}</Time>
+            <TitleDate>{infoTime.date}</TitleDate>
+            <WeatherIcon icon={icon} description={'icon weather'}/>
+          </ItemForecast>
+        ))
+      }
 
-      </WrapperForecast>
     </Wrapper>
   )
 }

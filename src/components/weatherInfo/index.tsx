@@ -1,7 +1,7 @@
 import React,{ FC } from 'react'
 import WeatherSlice from '../../interfaces/WeatherSlice'
-import WrapperStatus from '../../shared/WeatherStatus'
-import { Wrapper, Weather, Text, Temperature, BadgeTemp, WrapperGeneral, ProgressBar, ArrowIcon } from './elements'
+import WrapperStatu from '../../shared/WeatherStatu'
+import { Wrapper, Weather, Text, Temperature, BadgeTemp, WrapperGeneral, ProgressBar, ArrowIcon, WrapperStatus } from './elements'
 
 type Props = {
   infoCity: WeatherSlice
@@ -23,14 +23,16 @@ const WeatherInfo:FC<Props> = ({ infoCity }) => {
           {'C'}
         </BadgeTemp>
       </Temperature>
-      <Text>{name}, {infoTime.date}</Text>
+      <Text>{name} - {infoTime.date}</Text>
 
-      <WrapperStatus title={'Humidity'} measure={humidity} unit={'%'}>
-        <ProgressBar max={'100'} value={humidity}/>
-      </WrapperStatus>
+      <WrapperStatus>
+        <WrapperStatu title={'Humidity'} measure={humidity} unit={'%'}>
+          <ProgressBar max={'100'} value={humidity}/>
+        </WrapperStatu>
       
-      <WrapperStatus title={'Wind Status'} measure={wind.speed} unit={'k/h'}>
-        <ArrowIcon deg={wind.deg} src={'https://www.reshot.com/preview-assets/icons/GPJQ8YVENZ/circle-arrow-left-GPJQ8YVENZ.svg'}/>
+        <WrapperStatu title={'Wind Status'} measure={wind.speed} unit={'k/h'}>
+          <ArrowIcon deg={wind.deg} src={'https://www.reshot.com/preview-assets/icons/GPJQ8YVENZ/circle-arrow-left-GPJQ8YVENZ.svg'}/>
+        </WrapperStatu>
       </WrapperStatus>
     </Wrapper>
   )

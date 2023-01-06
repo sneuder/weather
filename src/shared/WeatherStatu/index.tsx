@@ -1,13 +1,14 @@
+import { FC, ReactElement } from 'react'
 import { WrapperStatus, Title, Text, TextUnit } from './elements'
 
 type Props = {
   title: string,
   measure: number,
   unit: string,
-  children: JSX.Element,
+  children: ReactElement
 }
 
-const WeatherStatus = ({title, measure, unit, children}: Props) => {
+const WeatherStatu:FC<Props> = ({title, measure, unit, children}) => {
   return (
     <WrapperStatus>
       <Title>{title}</Title>
@@ -19,4 +20,4 @@ const WeatherStatus = ({title, measure, unit, children}: Props) => {
   )
 }
 
-export default WeatherStatus
+export default WeatherStatu

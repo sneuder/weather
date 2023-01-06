@@ -1,6 +1,6 @@
 import Units from '../interfaces/Units'
 
-const units: Units = {
+export const units: Units = {
   temperature: {
     'metric': '°C',
     'imperial': '°F'
@@ -13,4 +13,10 @@ const units: Units = {
   unitsOrder: ['imperial', 'metric']
 }
 
-export default units
+const getNewUnit = () => {
+  const newUnit = units.unitsOrder.shift()
+  units.unitsOrder.push(newUnit)
+  return newUnit
+}
+
+export default getNewUnit

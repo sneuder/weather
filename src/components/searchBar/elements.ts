@@ -3,9 +3,9 @@ import viewPorts from '../../styles/viewPorts'
 import { ComProps } from '../../interfaces/shared'
 
 export const Wrapper = styled.form<ComProps>`
-  @media (max-width: ${viewPorts.mobile}px) {
-      display: ${props => props.hidemobile ? 'none' : 'block'};
-    }
+  @media (max-width: ${viewPorts.table}px) {
+    display: ${props => props.hidemobile ? 'none' : 'block'};
+  }
 `
 
 export const SearchInput = styled.input<ComProps>`
