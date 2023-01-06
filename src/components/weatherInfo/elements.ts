@@ -53,15 +53,6 @@ export const ArrowIcon = styled(BsFillArrowRightCircleFill)`
   animation-delay: 0.5s;
   animation-timing-function: cubic-bezier(1,-0.99,.61,1.95);
 
-  @keyframes fillingBar {
-    from {
-      width: 0%;
-    }
-    to {
-      width: ${({ level }: StyleProps) => `${level}%`};
-    }
-  }
-
   @keyframes arrowAnimation {
     0% {
       transform: rotate(0);
@@ -76,6 +67,8 @@ export const ArrowIcon = styled(BsFillArrowRightCircleFill)`
       transform: rotate(${({ deg }: StyleProps) => deg}deg);
     }
   }
+
+  transform: rotate(${({ deg }: StyleProps) => deg}deg);
 `
 
 export const WrapperStatus = styled.div`

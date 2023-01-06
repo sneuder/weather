@@ -26,7 +26,10 @@ const WeatherInfo:FC<Props> = ({ infoCity, measures }) => {
       <Temperature>{temperature}
         <BadgeTemp>{measures.temperature}</BadgeTemp>
       </Temperature>
-      <Text>{name} - {infoTime.date}</Text>
+      <WrapperGeneral>
+        <Text>{name} - {infoTime.date}</Text>
+        <Text>{infoTime.time}</Text>
+      </WrapperGeneral>
 
       <WrapperStatus>
         <WrapperStatu title={'Humidity'} measure={humidity} unit={'%'}>

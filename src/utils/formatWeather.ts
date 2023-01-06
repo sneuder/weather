@@ -48,9 +48,14 @@ const formatter = (info: UnknownInfo, name?: string) => {
 }
 
 const formatWeather = (infWeather: UnknownInfo, infForecast: Array<UnknownInfo>): WeatherSlice => {
+
+  const cityWeather = formatter(infWeather)
+  const forecast = infForecast.map((item: UnknownInfo) => formatter(item, infWeather.name))
+  forecast.unshift(cityWeather)
+
   return {
-    ...formatter(infWeather),
-    forecast: infForecast.map((item: UnknownInfo) => formatter(item, infWeather.name))
+    ...cityWeather,
+    forecast
   }
 }
 
