@@ -1,11 +1,9 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
-import { ComProps } from '../../interfaces/shared'
+import { BasicLayoutGrid } from '../../styles/styles'
 
 export const WrapperStatus = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
+  ${BasicLayoutGrid}
   gap: 10px;
   
   border-radius: 4px;

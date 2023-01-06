@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
 import viewPorts from '../../styles/viewPorts'
-
+import { BasicLayoutGrid } from '../../styles/styles'
 export const Wrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -26,9 +26,7 @@ export const Wrapper = styled.section`
 `
 
 export const ItemForecast = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
+  ${BasicLayoutGrid}
   gap: 5px;
 
   padding: 8px;

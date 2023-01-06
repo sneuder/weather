@@ -6,11 +6,11 @@ interface AppSlice {
 export type SearchParams = {
   q: string,
   units: UnitsOps,
-  cnt: number,
+  cnt: string,
 }
 
 export type AppStates = {
-  generalLoading: boolean,
+  generalLoading: boolean | string,
   unitLoading: boolean,
   errorSearch: boolean,
 }

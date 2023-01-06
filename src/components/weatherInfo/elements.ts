@@ -1,6 +1,7 @@
 import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 import styled from 'styled-components'
 import colors from '../../styles/colors'
+import { BasicLayoutGrid } from '../../styles/styles'
 
 type StyleProps = {
   deg: number,
@@ -8,16 +9,12 @@ type StyleProps = {
 }
 
 export const Wrapper = styled.div`
+  ${BasicLayoutGrid}
   color: ${colors.white};
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
   gap: 20px;
 `
 export const WrapperGeneral = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
+  ${BasicLayoutGrid}
   gap: 5px;
 `
 
@@ -97,8 +94,7 @@ export const ArrowIcon = styled(BsFillArrowRightCircleFill) <StyleProps>`
 `
 
 export const WrapperStatus = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
+  ${BasicLayoutGrid}
   grid-template-rows: 130px;
   gap: 30px;
   width: 100%;
