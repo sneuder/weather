@@ -1,22 +1,20 @@
 interface AppSlice {
-  params: {
-    q: string,
-    units: string | UnitsOps,
-    cnt: number
-  },
-  states: {
-    generalLoading: boolean,
-    unitLoading: boolean,
-    errorSearch: boolean,
-  }
+  params: SearchParams,
+  states: AppStates
 }
 
-export interface SearchParams {
+export type SearchParams = {
   q: string,
-  units: string,
+  units: UnitsOps,
   cnt: number,
 }
 
-type UnitsOps = 'metric' | 'imperial'
+export type AppStates = {
+  generalLoading: boolean,
+  unitLoading: boolean,
+  errorSearch: boolean,
+}
+
+export type UnitsOps = 'metric' | 'imperial'
 
 export default AppSlice

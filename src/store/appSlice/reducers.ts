@@ -1,22 +1,20 @@
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit'
-import AppSlice, { ParamsToUpdate } from '../../interfaces/AppSlice'
-import { SearchParams } from '../../interfaces/AppSlice'
+import AppSlice from '../../interfaces/AppSlice'
+import { SearchParams, AppStates, UnitsOps } from '../../interfaces/AppSlice'
 
-const updateParam: CaseReducer<AppSlice, PayloadAction<ParamsToUpdate>> = (state, action) => {
-  const { key, value } = action.payload
+// fix this, do not use never
+const updateParam: CaseReducer<AppSlice, PayloadAction<[string, never | string]>> = (state, action) => {
+  const [key, value] = action.payload
   state.params[key as keyof SearchParams] = value
 }
 
-const updateStates: CaseReducer<AppSlice, PayloadAction<boolean>> = (state, action) => {
-  state.states.generalLoading = action.payload
-}
 
-const updateLoadingUnit: CaseReducer<AppSlice, PayloadAction<boolean>> = (state, action) => {
-  state.states.unitLoading = action.payload
+const updateStates: CaseReducer<AppSlice, PayloadAction<[string, boolean]>> = (state, action) => {
+  const [key, value] = action.payload
+  state.states[key as keyof AppStates] = value
 }
 
 export default {
   updateParam,
   updateStates,
-  updateLoadingUnit
 }

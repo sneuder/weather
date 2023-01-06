@@ -2,23 +2,25 @@
 import { useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateWeather } from '../store/weatherSlice'
-import { updateParam, updateStates, updateLoadingUnit } from '../store/appSlice'
+import { updateParam, updateStates } from '../store/appSlice'
 
 import handleWeather from '../utils/handleWeather'
-import { handleParamsSearch, handleAppSettings } from '../utils/handleSettings'
+import { handleParamsSearch } from '../utils/handleSettings'
 import getNewUnit from '../utils/getNewUnit'
 
 import { RootState } from '../store'
 import { OnSubmit} from '../interfaces/shared'
+import { AxiosError } from 'axios'
 
 const useWeather = () => {
   // get name by referring
   const refSearch = useRef<HTMLInputElement>(null)
 
   const params = useSelector((state: RootState) => state.appState.params)
-  const unitLoading = useSelector((state: RootState) => state.appState.states.unitLoading)
+  const {unitLoading, errorSearch} = useSelector((state: RootState) => state.appState.states)
   const dispatch = useDispatch()
   
+  // get the weather by cityname, update search params, and loading state
   const getWeatherByName: OnSubmit = (e) => {
     e.preventDefault()
 
@@ -26,39 +28,46 @@ const useWeather = () => {
     if (name === '' || name === undefined) return
     const modifiedParam = handleParamsSearch(params, 'q', name)
 
-    dispatch(updateStates(true))
+    dispatch(updateStates(['generalLoading', true]))
     handleWeather(modifiedParam).then(data => {
       dispatch(updateWeather(data))
-      dispatch(updateParam(handleAppSettings('q', modifiedParam.q)))
+      dispatch(updateParam(['q', name]))
       // for apreciation of loading cloud (api is too fast)
-      setTimeout(() => dispatch(updateStates(false)), 500)
-    }).catch((e) => {
+      setTimeout(() => dispatch(updateStates(['generalLoading', false])), 500)
+    }).catch((_e:AxiosError) => {
       // if no city is found, just keep the previous city
-      setTimeout(() => dispatch(updateStates(false)), 500)
+      dispatch(updateStates(['errorSearch', true]))
+      setTimeout(() => dispatch(updateStates(['generalLoading', false])), 500)
     })
   }
 
+  // change the units for displaying, change the unitLoading state
   const changeUnit = () => {
     if(unitLoading) return
     const newUnit = getNewUnit()
     const modifiedParam = handleParamsSearch(params, 'units', newUnit)
 
-    dispatch(updateLoadingUnit(true))
+    dispatch(updateStates(['unitLoading', true]))
     handleWeather(modifiedParam).then(data => {
       dispatch(updateWeather(data))
-      dispatch(updateParam(handleAppSettings('q', modifiedParam.q)))
-      setTimeout(() =>
-      
-        dispatch(updateLoadingUnit(false)), 500
-      )
+      dispatch(updateParam(['units', newUnit]))
+      setTimeout(() => dispatch(updateStates(['unitLoading', false])), 500)
     })
   }
+
+  // just remove error search
+  const removeError = () => {
+    if (errorSearch) dispatch(updateStates(['errorSearch', false]))
+  }
+  
 
   return {
     getWeatherByName,
     changeUnit,
+    removeError,
     refSearch,
-    unitLoading
+    unitLoading,
+    errorSearch
   }
 }
 

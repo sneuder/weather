@@ -11,6 +11,7 @@ const state: AppSlice = {
   states: {
     generalLoading: false,
     unitLoading: false,
+    errorSearch: false,
   }
 }
 
@@ -20,5 +21,5 @@ const appSlice = createSlice({
   reducers: reducers
 })
 
-export const { updateParam, updateStates, updateLoadingUnit } = appSlice.actions
+export const { updateParam, updateStates } = appSlice.actions
 export default appSlice.reducer

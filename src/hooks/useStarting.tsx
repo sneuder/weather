@@ -6,7 +6,8 @@ import { updateParam, updateStates } from '../store/appSlice'
 
 import handleWeather from '../utils/handleWeather'
 import defaultCountry from '../utils/defaultCountry'
-import { handleParamsSearch, handleAppSettings } from '../utils/handleSettings'
+import { handleParamsSearch } from '../utils/handleSettings'
+import { units } from '../utils/getNewUnit'
 
 import { RootState } from '../store'
 
@@ -19,15 +20,21 @@ const useStarting = () => {
 
   const getDefaultWeather = () => {
     const modifedParams = handleParamsSearch(params, 'q', defaultCountry())
-    const updatedParams = handleAppSettings('q', modifedParams.q)
 
-    dispatch(updateStates(true))
+    dispatch(updateStates(['generalLoading', true]))
     handleWeather(modifedParams).then(data => {
       dispatch(updateWeather(data))
-      dispatch(updateParam(updatedParams))
+      dispatch(updateParam(['q', modifedParams.q]))
       // for apreciation of loading cloud (api is too fast)
-      setTimeout(() => dispatch(updateStates(false)), 500)
+      setTimeout(() => dispatch(updateStates(['generalLoading', false])), 500)
     })
+  }
+
+  const showCurrentUnits = () => {
+    return {
+      temperature: units.temperature[params.units],
+      wind: units.wind[params.units]
+    }
   }
 
   useEffect(() => {
@@ -37,7 +44,8 @@ const useStarting = () => {
 
   return {
     infoCity,
-    loadingGeneral
+    loadingGeneral,
+    measures: showCurrentUnits()
   }
 }
 

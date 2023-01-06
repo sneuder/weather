@@ -10,7 +10,7 @@ import Forecast from '../../components/forecast'
 import Loader from '../../components/loader'
 
 const Home = () => {
-  const {infoCity, loadingGeneral} = useStarting()
+  const {infoCity, loadingGeneral, measures} = useStarting()
 
   const {icon, forecast} = infoCity
   const {description} = infoCity.details
@@ -33,9 +33,9 @@ const Home = () => {
         <WeatherSide>
           <WrapperButton>
             <WeatherIcon icon={icon} description={description} />
-            <UnitButton />
+            <UnitButton measure={measures.temperature}/>
           </WrapperButton>
-          <WeatherInfo infoCity={infoCity} />
+          <WeatherInfo infoCity={infoCity} measures={measures}/>
         </WeatherSide>
         <ForecastSide hidedesktop>
           <SearchBar />
