@@ -2,6 +2,11 @@ import styled from 'styled-components'
 import colors from '../../styles/colors'
 import viewPorts from '../../styles/viewPorts'
 import { BasicLayoutGrid } from '../../styles/styles'
+
+type StyleProps = {
+  selected: boolean
+}
+
 export const Wrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -32,12 +37,12 @@ export const ItemForecast = styled.div`
   padding: 8px;
   border-radius: 8px;
   color: ${colors.white};
-  background-color: ${colors.darkBlue};
+  background-color: ${({ selected }: StyleProps) => selected === true ? colors.blue : colors.darkBlue};
   transition: background-color 0.2s, transform 0.2s;
   cursor: pointer;
   
   &:hover {
-    background-color: ${colors.darkGreyBlue};
+    background-color: ${({ selected }) => selected === true ? colors.blue : colors.darkGreyBlue};
     transform: scale(0.9);
   }
 

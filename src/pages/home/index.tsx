@@ -28,7 +28,7 @@ const Home = () => {
       <CardWrapper>
         <ForecastSide>
           <SearchBar hidemobile={true}/>
-          <Forecast infoForecast={forecast}/>
+          <Forecast infoForecast={forecast} mainWeatherId={infoCity.id}/>
         </ForecastSide>
         <WeatherSide>
           <WrapperButton>

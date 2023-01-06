@@ -6,9 +6,10 @@ import WeatherIcon from '../../shared/weatherIcon'
 
 type ArrayForecast = {
   infoForecast: Array<Forecasts>
+  mainWeatherId: number | string
 }
 
-const Forecast: FC<ArrayForecast> = ({infoForecast}) => {
+const Forecast: FC<ArrayForecast> = ({infoForecast, mainWeatherId}) => {
   const { handleForcastChange } = useForecast()
   return (
     <Wrapper>
@@ -16,7 +17,7 @@ const Forecast: FC<ArrayForecast> = ({infoForecast}) => {
         infoForecast.map((item) => {
           const {id, icon, infoTime} = item
           return (
-            <ItemForecast key={id} onClick={() => handleForcastChange(item)}>
+            <ItemForecast key={id} onClick={() => handleForcastChange(item)} selected={id === mainWeatherId}>
               <Time>{infoTime.time}</Time>
               <TitleDate>{infoTime.date}</TitleDate>
               <WeatherIcon icon={icon} description={'icon weather'}/>

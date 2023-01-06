@@ -27,14 +27,14 @@ const formatDateByText = (dt_txt: string) => {
   return dateAndTime(newDate)
 }
 
-const formatter = (info: UnknownInfo) => {
+const formatter = (info: UnknownInfo, name?: string) => {
   // dates and time formater
   const date = info.dt_txt ? formatDateByText(info.dt_txt) : formatDateByTZ(info.timezone, info.dt)
   const { gust: _gust, ...restWindInfo } = info.wind
 
   return {
     id: info.id || uuidv4(),
-    name: info.name || '',
+    name: info.name || name || '',
     icon: `https://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`,
     details: {
       weather: info.weather[0].main,
@@ -50,7 +50,7 @@ const formatter = (info: UnknownInfo) => {
 const formatWeather = (infWeather: UnknownInfo, infForecast: Array<UnknownInfo>): WeatherSlice => {
   return {
     ...formatter(infWeather),
-    forecast: infForecast.map((item: UnknownInfo) => formatter(item))
+    forecast: infForecast.map((item: UnknownInfo) => formatter(item, infWeather.name))
   }
 }
 
