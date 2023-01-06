@@ -3,9 +3,9 @@ interface AppSlice {
   states: AppStates
 }
 
-export type SearchParams = {
+export interface SearchParams {
   q: string,
-  units: UnitsOps,
+  units: UnitsOps | string,
   cnt: string,
 }
 

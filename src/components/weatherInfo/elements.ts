@@ -4,8 +4,8 @@ import colors from '../../styles/colors'
 import { BasicLayoutGrid } from '../../styles/styles'
 
 type StyleProps = {
-  deg: number,
-  level: number
+  deg?: number,
+  level?: number
 }
 
 export const Wrapper = styled.div`
@@ -43,22 +43,7 @@ export const BadgeTemp = styled.span`
   font-size: 2rem;
 `
 
-export const ProgressBar = styled.progress`
-  width: 100%;
-  appareance: none;
-  -webkit-appearance: none;
-  
-  &::-webkit-progress-bar {
-    border-radius: 4px;
-  }
-
-  &::-webkit-progress-value {
-    border-radius: 4px;
-    background-color: ${colors.blue};
-  }
-`
-
-export const ArrowIcon = styled(BsFillArrowRightCircleFill) <StyleProps>`
+export const ArrowIcon = styled(BsFillArrowRightCircleFill)`
   font-size: 2.1rem;
   color: ${colors.blue};
   
@@ -73,7 +58,7 @@ export const ArrowIcon = styled(BsFillArrowRightCircleFill) <StyleProps>`
       width: 0%;
     }
     to {
-      width: ${({ level }) => `${level}%`};
+      width: ${({ level }: StyleProps) => `${level}%`};
     }
   }
 
@@ -88,7 +73,7 @@ export const ArrowIcon = styled(BsFillArrowRightCircleFill) <StyleProps>`
       transform: rotate(120deg);
     }
     to {
-      transform: rotate(${({ deg }) => deg}deg);
+      transform: rotate(${({ deg }: StyleProps) => deg}deg);
     }
   }
 `

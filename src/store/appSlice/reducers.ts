@@ -2,8 +2,8 @@ import { CaseReducer, PayloadAction } from '@reduxjs/toolkit'
 import AppSlice from '../../interfaces/AppSlice'
 import { SearchParams, AppStates, UnitsOps } from '../../interfaces/AppSlice'
 
-// fix this, do not use never
-const updateParam: CaseReducer<AppSlice, PayloadAction<[string, never | UnitsOps]>> = (state, action) => {
+// fix the unitsops
+const updateParam: CaseReducer<AppSlice, PayloadAction<[string, string | UnitsOps]>> = (state, action) => {
   const [key, value] = action.payload
   state.params[key as keyof SearchParams] = value
 }

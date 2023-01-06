@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
 
+export type StyleProps = {
+  level: string | number
+}
+
 export const BarContainer = styled.div`
   width: 100%;
   height: 16px;
@@ -25,9 +29,9 @@ export const BarLevel = styled.div`
       width: 0%;
     }
     to {
-      width: ${({ level }) => `${level}%`};
+      width: ${({ level }: StyleProps) => `${level}%`};
     }
   }
 
-  width: ${({ level }) => level}%
+  width: ${({ level }: StyleProps) => level}%
 `

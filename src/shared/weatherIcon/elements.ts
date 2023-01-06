@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import { Props } from '../../interfaces/shared'
 
-export const Icon = styled.img<Props>`
+export const Icon = styled.img`
   width: 60px;
   transform: scale(1.5)
 `
