@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import colors from '../../styles/colors'
 
 type StyleProps = {
-  deg: number
+  deg: number,
+  level: number
 }
 
 export const Wrapper = styled.div`

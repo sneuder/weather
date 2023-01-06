@@ -2,6 +2,10 @@ import styled, { css } from 'styled-components'
 import colors from '../../styles/colors'
 const size = '40px'
 
+type StyleProps = {
+  loading: string
+}
+
 const defaultStyleButton = css`
   cursor: auto;
   color: ${colors.darkBlue};
@@ -9,7 +13,7 @@ const defaultStyleButton = css`
   
 `
 
-export const Button = styled.button<any>`
+export const Button = styled.button<StyleProps>`
   ${defaultStyleButton}
   width: ${size};
   height: ${size};
