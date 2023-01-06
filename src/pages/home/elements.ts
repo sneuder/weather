@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
 import viewPorts from '../../styles/viewPorts'
+import { ComProps } from '../../interfaces/shared'
 
 const paddingSide = '30px'
 
@@ -44,7 +45,7 @@ export const CardWrapper = styled.div`
   }
 `
 
-export const ForecastSide = styled.section`
+export const ForecastSide = styled.section<ComProps>`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
