@@ -5,10 +5,13 @@ import { Wrapper, SearchInput, Icon } from './elements'
 import useWeather from '../../hooks/useWeather'
 
 const SearchBar:FC<ComProps> = ({hidemobile}) => {
-  const {getWeatherByName, refSearch} = useWeather()
+  const {getWeatherByName, refSearch, removeError, errorSearch} = useWeather()
+  const errorMessage = errorSearch ? 'City not found' : 'Search new place'
+  
   return (
     <Wrapper onSubmit={getWeatherByName} hidemobile={hidemobile}>
-      <SearchInput type="text" ref={refSearch} placeholder={'Search new place'}/>
+      <SearchInput onFocus={removeError} type="text" ref={refSearch} placeholder={errorMessage} error={`${errorSearch}`}/>
+      <Icon error={`${errorSearch}`}/>
     </Wrapper>
   )
 }

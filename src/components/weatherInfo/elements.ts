@@ -1,3 +1,4 @@
+import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 import styled from 'styled-components'
 import colors from '../../styles/colors'
 
@@ -59,18 +60,34 @@ export const ProgressBar = styled.progress`
   }
 `
 
-export const ArrowIcon = styled.img<StyleProps>`
-  width: 40px;
-  color: ${colors.white};
+export const ArrowIcon = styled(BsFillArrowRightCircleFill) <StyleProps>`
+  font-size: 2.1rem;
+  color: ${colors.blue};
   
   animation-name: arrowAnimation;
-  animation-duration: 2s;
+  animation-duration: 3s;
   animation-fill-mode: forwards;
-  animation-delay: 1s;
-  
-  @keyframes arrowAnimation {
+  animation-delay: 0.5s;
+  animation-timing-function: cubic-bezier(1,-0.99,.61,1.95);
+
+  @keyframes fillingBar {
     from {
+      width: 0%;
+    }
+    to {
+      width: ${({ level }) => `${level}%`};
+    }
+  }
+
+  @keyframes arrowAnimation {
+    0% {
       transform: rotate(0);
+    }
+    25% {
+      transform: rotate(90deg);
+    }
+    50% {
+      transform: rotate(120deg);
     }
     to {
       transform: rotate(${({ deg }) => deg}deg);

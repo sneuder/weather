@@ -1,11 +1,14 @@
+import { FC } from 'react'
 import useWeather from '../../hooks/useWeather'
 import { Button } from './elements'
 
-import units from '../../utils/getNewUnit'
+type Props = {
+  measure: string
+}
 
-const UnitButton = () => {
+const UnitButton:FC<Props> = ({measure}) => {
   const {changeUnit, unitLoading} = useWeather()
-  return <Button onClick={changeUnit} disabled={unitLoading} loading={`${unitLoading}`}>{'C'}</Button>
+  return <Button onClick={changeUnit} disabled={unitLoading} loading={`${unitLoading}`}>{measure}</Button>
 }
 
 export default UnitButton

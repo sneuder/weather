@@ -1,16 +1,17 @@
+import { FC } from 'react'
+import { Forecasts } from '../../interfaces/WeatherSlice'
 import { Wrapper, ItemForecast, TitleDate, Time } from './elements'
 import WeatherIcon from '../../shared/weatherIcon'
 
 type ArrayForecast = {
-  infoForecast: Array<{}>
+  infoForecast: Array<Forecasts>
 }
 
-const Forecast = ({infoForecast}: ArrayForecast) => {
-
+const Forecast: FC<ArrayForecast> = ({infoForecast}) => {
   return (
     <Wrapper>
       {
-        infoForecast.map(({id, details, icon, infoTime }) => (
+        infoForecast.map(({id, icon, infoTime }) => (
           <ItemForecast key={id}>
             <Time>{infoTime.time}</Time>
             <TitleDate>{infoTime.date}</TitleDate>
@@ -18,7 +19,6 @@ const Forecast = ({infoForecast}: ArrayForecast) => {
           </ItemForecast>
         ))
       }
-
     </Wrapper>
   )
 }
