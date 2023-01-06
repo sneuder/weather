@@ -14,7 +14,7 @@ export const units: Units = {
 }
 
 const getNewUnit = () => {
-  const newUnit = units.unitsOrder.shift()
+  const newUnit = units.unitsOrder.shift() as 'imperial' | 'metric'
   units.unitsOrder.push(newUnit)
   return newUnit
 }

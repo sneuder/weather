@@ -1,4 +1,5 @@
 import WeatherSlice from '../interfaces/WeatherSlice'
+import { UnknownInfo } from '../interfaces/shared'
 import { v4 as uuidv4 } from 'uuid'
 
 const dateAndTime = (newDate: Date) => {
@@ -26,10 +27,10 @@ const formatDateByText = (dt_txt: string) => {
   return dateAndTime(newDate)
 }
 
-const formatter = (info) => {
+const formatter = (info: UnknownInfo) => {
   // dates and time formater
   const date = info.dt_txt ? formatDateByText(info.dt_txt) : formatDateByTZ(info.timezone, info.dt)
-  const { gust, ...restWindInfo } = info.wind
+  const { gust: _gust, ...restWindInfo } = info.wind
 
   return {
     id: info.id || uuidv4(),
@@ -46,10 +47,10 @@ const formatter = (info) => {
   }
 }
 
-const formatWeather = (infWeather, infForecast): WeatherSlice => {
+const formatWeather = (infWeather: UnknownInfo, infForecast: Array<UnknownInfo>): WeatherSlice => {
   return {
     ...formatter(infWeather),
-    forecast: infForecast.map(item => formatter(item))
+    forecast: infForecast.map((item: UnknownInfo) => formatter(item))
   }
 }
 

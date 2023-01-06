@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { EndPoints, SearchParams } from '../interfaces/shared'
+import { EndPoints } from '../interfaces/shared'
+import { SearchParams } from '../interfaces/AppSlice'
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
 const API_KEY = import.meta.env.VITE_API_KEY
