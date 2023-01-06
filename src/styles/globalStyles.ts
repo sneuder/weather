@@ -7,7 +7,7 @@ const GlobalStyles = createGlobalStyle`
     border: 0;
     outline: 0;
     box-sizing: border-box;
-    font-family: "Raleway", sans-serif;
+    font-family: "Montserrat", sans-serif;
   }
 `
 
