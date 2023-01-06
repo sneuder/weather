@@ -8,6 +8,7 @@ import handleWeather from '../utils/handleWeather'
 import defaultCountry from '../utils/defaultCountry'
 import { handleParamsSearch } from '../utils/handleSettings'
 import { units } from '../utils/getNewUnit'
+import { UnitsOps } from '../interfaces/Units'
 
 import { RootState } from '../store'
 
@@ -32,8 +33,8 @@ const useStarting = () => {
 
   const showCurrentUnits = () => {
     return {
-      temperature: units.temperature[params.units],
-      wind: units.wind[params.units]
+      temperature: units.temperature[params.units as keyof UnitsOps],
+      wind: units.wind[params.units as keyof UnitsOps]
     }
   }
 

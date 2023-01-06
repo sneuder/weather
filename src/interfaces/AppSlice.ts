@@ -5,12 +5,12 @@ interface AppSlice {
 
 export interface SearchParams {
   q: string,
-  units: UnitsOps | string,
-  cnt: string,
+  units: UnitsOps,
+  cnt: number | string,
 }
 
 export type AppStates = {
-  generalLoading: boolean | string,
+  generalLoading: boolean,
   unitLoading: boolean,
   errorSearch: boolean,
 }

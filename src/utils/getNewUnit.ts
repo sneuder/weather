@@ -13,9 +13,9 @@ export const units: Units = {
   unitsOrder: ['imperial', 'metric']
 }
 
-const getNewUnit = () => {
-  const newUnit = units.unitsOrder.shift() as 'imperial' | 'metric'
-  units.unitsOrder.push(newUnit)
+const getNewUnit = (): string => {
+  const newUnit = units.unitsOrder[0]
+  units.unitsOrder.reverse()
   return newUnit
 }
 
