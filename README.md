@@ -25,5 +25,7 @@ VITE_API_KEY=ce026dc549f7e825335d37270df52b23
 - User can change the unit of temperature.
 
 ## Technical aspects
-- When the app is started, it gets the city based on its local date (it contains the country too). If the date with the country is not found, the app will retrieve Londres.
-- 
+- When the app is started, it gets the city based on its local date (where it contains the country too). If the date with the country is not found, the app will retrieve Londres.
+- When the user search a city or country with no succeed, it is going to display the previous country/city.
+- If the user decides to change the unit, the button will be in disabled for no needed request to the API.
+- The loading component have some milisecond extra to appreciate its animation (the appi is too fast in most cases).
