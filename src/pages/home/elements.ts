@@ -24,13 +24,11 @@ export const Background = styled.div`
 `
 
 export const CardWrapper = styled.div`
-  width: 60%;
-  
   display: grid;
   grid-template-columns: 1fr 0.8fr;
-
-  @media (max-width: ${viewPorts.sDesktop}px) {
-    width: 80%;
+  
+  @media (min-width: ${viewPorts.sDesktop}px) {
+    width: 900px;
   }
 
   @media (max-width: ${viewPorts.table}px) {

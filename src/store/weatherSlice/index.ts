@@ -29,5 +29,5 @@ const searchSlice = createSlice({
   reducers: reducers
 })
 
-export const { updateWeather } = searchSlice.actions
+export const { updateWeather, updateFocusedWeather } = searchSlice.actions
 export default searchSlice.reducer

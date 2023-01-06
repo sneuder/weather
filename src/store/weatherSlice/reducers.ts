@@ -5,10 +5,18 @@ const updateWeather: CaseReducer<WeatherSlice, PayloadAction<WeatherSlice>> = (s
   return action.payload
 }
 
+const updateFocusedWeather = (state, action) => {
+  return {
+    ...action.payload,
+    forecast: state.forecast
+  }
+}
+
 // const updateWeather = (state: WeatherSlice, action: PayloadAction<WeatherSlice>) => {
 //   return action.payload
 // }
 
 export default {
-  updateWeather
+  updateWeather,
+  updateFocusedWeather
 }
