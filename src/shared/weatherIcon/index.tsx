@@ -7,7 +7,7 @@ type Props = {
 }
 
 const WeatherIcon:FC<Props> = ({ icon, description }) => {
-  return <Icon src={icon} alt={description || 'This is an icon'} loading={'eager'}/>
+  return <Icon src={icon} alt={description || 'This is an icon'}/>
 }
 
 export default WeatherIcon

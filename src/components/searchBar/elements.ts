@@ -4,7 +4,7 @@ import viewPorts from '../../styles/viewPorts'
 import colors from '../../styles/colors'
 
 type StyleProps = {
-  error?: boolean,
+  error?: string,
   hidemobile?: boolean,
 }
 
@@ -29,11 +29,11 @@ export const SearchInput = styled.input`
   padding-left: 40px;
   border-radius: 4px;
   font-size: 1.1rem;
-  color: ${(({ error }: StyleProps) => error === true ? colors.error : colors.darkBlue)};
-  border: 2px solid ${(({ error }) => error === true ? colors.error : 'transparent')};
+  color: ${(({ error }: StyleProps) => error === 'true' ? colors.error : colors.darkBlue)};
+  border: 2px solid ${(({ error }) => error === 'true' ? colors.error : 'transparent')};
 
   &::placeholder {
-  color: ${(({ error }) => error === true ? colors.error : colors.grey)};
+  color: ${(({ error }) => error === 'true' ? colors.error : colors.grey)};
 }
 
   &:focus {
@@ -48,6 +48,6 @@ export const Icon = styled(BiSearch)`
   font-size: 25px;
   top: calc((50px / 2) - 12.5px);
   left: 10px;
-  color: ${({ error }: StyleProps) => error === true ? colors.error : colors.grey};
+  color: ${({ error }: StyleProps) => error === 'true' ? colors.error : colors.grey};
   transition: color 0.2s;
 `

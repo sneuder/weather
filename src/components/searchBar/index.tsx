@@ -13,8 +13,10 @@ const SearchBar:FC<Props> = ({hidemobile}) => {
   
   return (
     <Wrapper onSubmit={getWeatherByName} hidemobile={hidemobile}>
-      <SearchInput onFocus={removeError} type="text" ref={refSearch} placeholder={errorMessage} error={errorSearch}/>
-      <Icon error={errorSearch}/>
+      <SearchInput onFocus={removeError} type="text" 
+        ref={refSearch} placeholder={errorMessage} error={`${errorSearch}`}
+      />
+      <Icon error={`${errorSearch}`}/>
     </Wrapper>
   )
 }
