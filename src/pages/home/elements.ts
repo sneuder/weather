@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 import colors from '../../styles/colors'
 import viewPorts from '../../styles/viewPorts'
-import { ComProps } from '../../interfaces/shared'
+
+type StyleProps = {
+  hidedesktop?: boolean
+}
 
 const paddingSide = '30px'
 
@@ -43,7 +46,7 @@ export const CardWrapper = styled.div`
   }
 `
 
-export const ForecastSide = styled.section<ComProps>`
+export const ForecastSide = styled.section`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr;
@@ -53,7 +56,7 @@ export const ForecastSide = styled.section<ComProps>`
   background-color: ${colors.cakeBlue};
   border-radius: 8px 0 0 8px;
 
-  ${({ hidedesktop }) => hidedesktop && 'display: none;'}
+  ${({ hidedesktop }: StyleProps) => hidedesktop && 'display: none;'}
   
   @media (max-width: ${viewPorts.table}px) {
     border-radius: 0 0 8px 8px;

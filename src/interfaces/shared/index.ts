@@ -45,7 +45,3 @@ export type UnknownInfo = {
 export type EndPoints = 'weather' | 'forecast'
 
 export type OnSubmit = (event: React.FormEvent<HTMLFormElement>) => void
-
-export type ComProps = {
-  [key: string]: boolean | string | number | OnSubmit | ReactElement[] | ReactElement | RefObject<HTMLInputElement>
-}
