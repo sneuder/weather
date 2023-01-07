@@ -10,7 +10,7 @@ In case you do not want to do all this process, and you just want to use the pro
 - `git clone` this repository: 
   - `git clone https://github.com/sneuder/weather.git` or `git clone git@github.com:sneuder/weather.git`
 - Install the dependencies with this command: `npm install` or `npm i`
-- Create and configure the `.env` file for the env variables like this:
+- Create and configure the `.env` file for the env variables like this (however, the file already exist, therefore, you can skip this step):
 ```
 VITE_BASE_URL=https://api.openweathermap.org/data/2.5/
 VITE_API_KEY=ce026dc549f7e825335d37270df52b23
