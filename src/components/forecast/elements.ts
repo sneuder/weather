@@ -21,7 +21,7 @@ export const Wrapper = styled.section`
     display: none;
   }
 
-  height: ${() => `${514}px`};
+  height: ${() => `${525}px`};
 
   @media (max-width: ${viewPorts.table}px) {
     height: auto;
